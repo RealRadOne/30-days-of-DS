@@ -2,6 +2,8 @@
 ### Problem From LC Contest
 #### [Design A Parking Lot](https://leetcode.com/contest/biweekly-contest-36/problems/design-parking-system/)
 #### Code
+
+```java
 class ParkingSystem 
 {
     int b=0;
@@ -26,11 +28,13 @@ class ParkingSystem
         return false;
     }
 }
+```
 =============================================================================================================================================================================
 ## Day1=Problem2
 ### Problem From LC Daily
 #### [K Pairs In Array](https://leetcode.com/problems/k-diff-pairs-in-an-array/)
 #### Code
+```java
 class Solution 
 {
     public int findPairs(int[] nums, int k) 
@@ -53,3 +57,4 @@ class Solution
         return c;
     }
 }
+```
