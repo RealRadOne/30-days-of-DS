@@ -29,7 +29,8 @@ class ParkingSystem
     }
 }
 ```
-=============================================================================================================================================================================
+---
+
 ## Day1=Problem2
 ### Problem From LC Daily
 #### [K Pairs In Array](https://leetcode.com/problems/k-diff-pairs-in-an-array/)
