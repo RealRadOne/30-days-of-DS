@@ -25,8 +25,8 @@ jobs:
         run: ls
       - name: Run convert
         run: |
-        cd src
-        ./convert.sh
+          cd src
+          ./convert.sh
 
 
   
