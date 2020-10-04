@@ -26,6 +26,6 @@ jobs:
       - name: Pandoc converter
         uses: Ender-events/pandoc@master
         with:
-          args: '-s -o 30-days-of-DS\main.html 30-days-of-DS\main.md'
+          args: '-s -o /main.html /main.md'
 
   
