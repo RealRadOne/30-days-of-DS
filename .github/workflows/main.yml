@@ -14,6 +14,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    name: md to html
     # The type of runner that the job will run on
     runs-on: ubuntu-18.04
 
@@ -22,14 +23,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
-
-  convert_via_pandoc:
-    runs_on: ubuntu-18.04
-    steps:
-      - run: rm index.html
-      - uses: docker://pandoc/core:2.9
+      - name: Pandoc converter
+        uses: Ender-events/pandoc@master
         with:
-          args: |>
-            --standalone
-            --output=index.html
-              input.md
+          args: '-s -o main.html main.md'
+
+  
