@@ -23,10 +23,12 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run ls
         run: ls
-      - name: Run convert
-        run: |
-          cd src
-          ./convert.sh
+      - name: Enter directory
+        run: cd src
+      - name: Convert md2html
+        uses: Ender-events/pandoc@master
+        with:
+          args: '-s -o main.html main.md'
 
 
   
