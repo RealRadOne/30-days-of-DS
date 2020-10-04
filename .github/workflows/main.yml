@@ -24,8 +24,6 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
       - name: Pandoc converter
-        uses: Ender-events/pandoc@master
-        with:
-          args: '-s -o main.html main.md'
+        run: | ./convert.sh
 
   

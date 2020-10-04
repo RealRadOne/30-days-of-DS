@@ -1,0 +1,1 @@
+pandoc main.md -f markdown -t html -s -o main.html
