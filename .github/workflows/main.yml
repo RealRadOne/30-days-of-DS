@@ -24,11 +24,12 @@ jobs:
       - name: Run ls
         run: ls
       - name: Enter directory
-        run: cd src
-      - name: Convert md2html
-        uses: Ender-events/pandoc@master
-        with:
-          args: '-s -o main.html main.md'
+        run: |
+          cd src
+      #- name: Convert md2html
+        #uses: Ender-events/pandoc@master
+        #with:
+          #args: '-s -o main.html main.md'
 
 
   
