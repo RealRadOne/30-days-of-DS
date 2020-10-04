@@ -59,3 +59,33 @@ class Solution
     }
 }
 ```
+---
+
+## Day2
+### [Remove Covered Intervals](https://leetcode.com/explore/challenge/card/october-leetcoding-challenge/559/week-1-october-1st-october-7th/3483/)
+
+```java
+class Solution 
+{
+    public int removeCoveredIntervals(int[][] intervals) 
+    {
+        int count=0;
+        if(intervals.length<=1)
+            return intervals.length;
+        for(int i=0;i<intervals.length;i++)
+        {
+            int start=intervals[i][0];
+            int end=intervals[i][1];
+            for(int j=0;j<intervals.length;j++)
+            {
+                if(i!=j)
+                {
+                if(intervals[j][0]<=start && end<=intervals[j][1])
+                {count++;break;}   
+                }
+            }
+        }
+        return intervals.length-count;
+    }
+}
+```
