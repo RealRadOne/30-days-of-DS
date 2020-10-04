@@ -25,7 +25,6 @@ jobs:
         run: ls
       - name: Enter directory
         run: |
-          cd ..
           cd src
       #- name: Convert md2html
         #uses: Ender-events/pandoc@master
