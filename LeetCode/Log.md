@@ -89,3 +89,151 @@ class Solution
     }
 }
 ```
+## Day-3
+### [Distribute Candies](https://leetcode.com/problems/distribute-candies/)
+
+```java
+class Solution 
+{
+    public int distributeCandies(int[] candies) 
+    {
+        HashMap<Integer,Integer>types=new HashMap<Integer,Integer>();
+        for(int i=0;i<candies.length;i++)
+        {
+            if(!types.containsKey(candies[i]))
+            {
+                types.put(candies[i],1);
+            }
+            else
+                types.put(candies[i],types.get(candies[i])+1);
+        }
+        if(types.size()>=candies.length/2)
+            return candies.length/2;
+        else
+            return types.size();
+    }
+}
+```
+### [Sum Of Left Leaves](https://leetcode.com/problems/sum-of-left-leaves/)
+
+```java
+class Solution
+{
+    public boolean isleaf(TreeNode root)
+    {
+        if(root==null)
+            return false;
+        if(root.left==null && root.right==null)
+            return true;
+        return false;
+    }
+    public int sumOfLeftLeaves(TreeNode root) 
+    {
+        if(root==null)
+            return 0;
+        if(isleaf(root.left))
+        {
+            return root.left.val+sumOfLeftLeaves(root.right);
+        }
+        return sumOfLeftLeaves(root.right)+sumOfLeftLeaves(root.left);
+    }
+}
+```
+
+## Day-4
+###[Count Characters](https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/)
+```java
+class Solution 
+{
+    public int countCharacters(String[] words, String chars) 
+    {
+        HashMap<Character,Integer>hash=new HashMap<Character,Integer>();
+        for(int i=0;i<chars.length();i++)
+        {
+            if(hash.containsKey(chars.charAt(i)))
+            {
+                hash.put(chars.charAt(i),hash.get(chars.charAt(i))+1);
+            }
+            else
+                hash.put(chars.charAt(i),1);
+        }
+        int ans=0;
+        for(int i=0;i<words.length;i++)
+        {
+            HashMap<Character,Integer>temp=new HashMap<Character,Integer>();
+            boolean all=true;
+            for(int j=0;j<words[i].length();j++)
+            {
+                if(!hash.containsKey(words[i].charAt(j)))
+                {all=false;break;}
+                if(temp.containsKey(words[i].charAt(j)))
+                {
+                    temp.put(words[i].charAt(j),temp.get(words[i].charAt(j))+1);
+                }
+                else
+                    temp.put(words[i].charAt(j),1);
+            }
+            if(all)
+            {
+                boolean chk=true;
+                for(int j=0;j<words[i].length();j++)
+                {
+                    if(temp.get(words[i].charAt(j))>hash.get(words[i].charAt(j)))
+                    {chk=false;break;}
+                }
+                if(chk)
+                    ans=ans+words[i].length();
+            }
+        }
+        return ans;
+    }
+}
+``` 
+###[Maximum Level Sum of a Binary Tree](https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/)
+```java
+class Solution 
+{
+    HashMap<Integer,List<Integer>>hash=new HashMap<Integer,List<Integer>>();
+    public void lTrav(TreeNode root,int level)
+    {
+        if(root==null)
+            return;
+        if(!hash.containsKey(level))
+        {
+            List<Integer>lisa=new ArrayList<Integer>();
+            lisa.add(root.val);
+            hash.put(level,lisa);
+        }
+        else
+        {
+            List<Integer>lisa=hash.get(level);
+            lisa.add(root.val);
+            hash.put(level,lisa);
+        }
+        lTrav(root.left,level+1);
+        lTrav(root.right,level+1);
+    }
+    public int maxLevelSum(TreeNode root) 
+    {
+        lTrav(root,0);
+        int max=Integer.MIN_VALUE;
+        int lev=0;
+        System.out.println(hash);
+        for(Integer vals : hash.keySet())  
+        { 
+            // search  for value 
+            List<Integer> lisa = hash.get(vals); 
+            int sum=0;
+            for(int i=0;i<lisa.size();i++)
+            {
+                sum=sum+lisa.get(i);
+            }
+            if(sum>max)
+            {max=sum;lev=vals;}
+        } 
+        return lev+1;
+    }
+}
+```
+
+
